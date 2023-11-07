@@ -17,13 +17,20 @@ $dao = new UsuarioDAO();
         if(isset($_SESSION['email'])) {
             $usuario = $dao->obter($_SESSION['id_usuario']);
             echo '
-            <form action="../controller/sair.php">
+            <form action="../controller/sair.php" method="post">
                 <div class="sair-usuario">
                     <input type="hidden" name="sair" value="' . $_SESSION['sair']=true . '">
                     <input type="submit" value="Sair">
                 </div>
             </form>
-            <p><a href="cadastro_post.php" style="text-decoration: none;">Publicar</a></p>';
+            <p><a href="cadastro_post.php" style="text-decoration: none;">Publicar</a></p>
+            <form action="../controller/excluir_usuario.php" method="post">
+                <div class="excluir-usuario">
+                    <input type="hidden" name="id_usuario" value="' . $_SESSION['id_usuario'] . '">
+                    <input type="hidden" name="excluir_conta" value="' . $_SESSION['excluir'] = true . '">
+                    <input type="submit" name="excluir_conta" value="Excluir conta" id="excluir">
+                </div>
+            </form>';
         }else{
             echo '
             <p><a href="login.php" style="text-decoration: none;">Entrar</a></p>
@@ -31,6 +38,5 @@ $dao = new UsuarioDAO();
         }
         ?>
         
-    
 </body>
 </html>
