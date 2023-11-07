@@ -14,7 +14,7 @@ $dao = new UsuarioDAO();
 <body>
     
         <?php
-        if(isset($_SESSION['email'])) {
+        if(isset($_SESSION['id_usuario'])) {
             $usuario = $dao->obter($_SESSION['id_usuario']);
             echo '
             <form action="../controller/sair.php" method="post">
