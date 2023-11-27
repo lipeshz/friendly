@@ -19,24 +19,6 @@ class PostDAO{
         }
     }
 
-    function inserir_curtida($id){
-        $result = $this->con->query("UPDATE posts SET curtida = curtida + 1 (WHERE id_post = '" . $id . "')");
-
-        if($result->rowCount() > 0){
-            return true;
-        }else
-        return false;
-    }
-
-    function remover_curtida($id){
-        $result = $this->con->query("UPDATE posts SET curtida = curtida - 1 (WHERE id_post = '" . $id . "')");
-
-        if($result->rowCount() > 0){
-            return true;
-        }else
-        return false;
-    }
-
     function excluir($id){
         $result = $this->con->query("DELETE FROM posts WHERE (id_post = '" . $id . "')");
 

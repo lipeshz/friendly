@@ -1,11 +1,11 @@
 <?php 
 session_start();
 require_once('../model/UsuarioDAO.php');
-
 $dao = new UsuarioDAO();
 $email_existente = $dao->obter_por_email_cad($email);
 $nick_existente = $dao->obter_por_nick($nick);
 $cpf_existente = $dao->obter_por_cpf($cpf);
+
 
 if($_POST['senha'] != $_POST['conf_senha']){
     $_SESSION['cad_senha_err']=true;
