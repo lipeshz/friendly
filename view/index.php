@@ -24,8 +24,12 @@ $posts = $dao_p->obter_todos();
                 echo '
                 <div class="post" id="' . $post->get_id_post() . '">
                     <div id="texto">
-                    <span class="texto">' . $post->get_texto() . '</span>
-                    </div>';
+                        <span class="texto">' . $post->get_texto() . '</span>
+                    </div>
+                    <div class="curtidas">
+                        <p>' . $post->get_curtida() . '</p>
+                    </div>
+                    ';
 
                 if(isset($_SESSION['id_usuario'])){
                     $usuario = $dao_u->obter($_SESSION['id_usuario']);
@@ -37,10 +41,9 @@ $posts = $dao_p->obter_todos();
                                 <input type="hidden" name="excluir" value="' . $_SESSION['excluir'] = true . '">
                                 <input type="submit" name="excluir" value="Excluir">
                             </div>
-                        </form>';
-                        if(isset($_SESSION['id_usuario'])){
-                        echo '
-                        <form action="../controller/curtir_post.php">
+                        </form>
+
+                        <form method="post" action="../controller/curtir_post.php">
                             <div class="curtir-post">
                                 <input type="hidden" name="id_post" value ="' . $post->get_id_post() . '">
                                 <input type="hidden" name="excluir" value="' . $_SESSION['curtir'] = true . '">
@@ -48,9 +51,7 @@ $posts = $dao_p->obter_todos();
                             </div>
                         </form>';
 
-                    }else{
-                        echo "";
-                    }
+                    
                 echo '
                 </div>';  
                     }
