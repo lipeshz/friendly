@@ -45,9 +45,9 @@ $posts = $dao_p->obter_todos();
 
                         <form method="post" action="../controller/curtir_post.php">
                             <div class="curtir-post">
-                                <input type="hidden" name="id_post" value ="' . $post->get_id_post() . '">
-                                <input type="hidden" name="excluir" value="' . $_SESSION['curtir'] = true . '">
-                                <input type="submit" name="Curtir" value="Curtir">
+                                <input type="hidden" name="id_post" value="' . $post->get_id_post() . '">
+                                <input type="hidden" name="curtir" value="' . $_SESSION['curtir'] = true . '">
+                                <input type="submit" name="curtir" value="Curtir">
                             </div>
                         </form>';
 
