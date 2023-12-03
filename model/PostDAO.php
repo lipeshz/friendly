@@ -31,6 +31,21 @@ class PostDAO{
 
     function obter($id){
         $result = $this->con->query("SELECT * FROM posts WHERE (id_post = '" . $id ."')");
+
+        if($result->rowCount() > 0){
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+
+            $p = new Post();
+            $p->set_id_post($row['id_post']);
+            $p->set_id_publicador($row['id_publicador']);
+            $p->set_texto($row['texto']);
+            $p->set_anexo($row['anexo']);
+            $p->set_curtida($row['curtida']);
+            
+            return $p;
+        }else{
+            return false;
+        }
     }
 
     function obter_por_palavra($busca){
@@ -70,6 +85,16 @@ class PostDAO{
             array_push($lista, $p);
         }
         return $lista;
+    }
+
+    function inserir_curtida($id){
+        $result = $this->con->query("UPDATE posts SET curtida = curtida + 1 WHERE id_post = '" . $id . "'");
+
+        if($result->rowCount() > 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
 ?>
