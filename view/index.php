@@ -5,6 +5,7 @@ require_once('../model/UsuarioDAO.php');
 $dao_u = new UsuarioDAO();
 $dao_p = new PostDAO();
 $posts = $dao_p->obter_todos();
+$usuario = $dao_u->obter($_SESSION['id_usuario']);
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +21,12 @@ $posts = $dao_p->obter_todos();
         <?php 
             foreach ($posts as $post_arr){
                 $post = $post_arr;
+                $usuario_pub = $dao_u->obter($post->get_id_publicador());
                 $_POST['id_publicador'] = $post->get_id_publicador();
                 echo '
+                <div class="nome-publicador">
+                    <p>' . $usuario_pub->get_nome($post->get_id_publicador()) . '</p>
+                </div>
                 <div class="post" id="' . $post->get_id_post() . '">
                     <div id="texto">
                         <span class="texto">' . $post->get_texto() . '</span>
@@ -30,9 +35,7 @@ $posts = $dao_p->obter_todos();
                         <p>' . $post->get_curtida() . '</p>
                     </div>
                     ';
-
                 if(isset($_SESSION['id_usuario'])){
-                    $usuario = $dao_u->obter($_SESSION['id_usuario']);
                     if($_SESSION['id_usuario'] == $post->get_id_publicador()){
                         echo '
                         <form method="post" action="../controller/excluir_post.php">
@@ -50,8 +53,6 @@ $posts = $dao_p->obter_todos();
                                 <input type="submit" name="curtir" value="Curtir">
                             </div>
                         </form>';
-
-                    
                 echo '
                 </div>';  
                     }
