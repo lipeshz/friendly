@@ -6,6 +6,7 @@ $dao_u = new UsuarioDAO();
 $dao_p = new PostDAO();
 $posts = $dao_p->obter_todos();
 $usuario = $dao_u->obter($_SESSION['id_usuario']);
+$usuario_pub = $dao_u->obter($id_pub);
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +22,12 @@ $usuario = $dao_u->obter($_SESSION['id_usuario']);
         <?php 
             foreach ($posts as $post_arr){
                 $post = $post_arr;
-                $usuario_pub = $dao_u->obter($post->get_id_publicador());
-                $_POST['id_publicador'] = $post->get_id_publicador();
+                $id_pub = $post->get_id_publicador();
                 echo '
-                <div class="nome-publicador">
-                    <p>' . $usuario_pub->get_nome($post->get_id_publicador()) . '</p>
-                </div>
                 <div class="post" id="' . $post->get_id_post() . '">
+                    <div class="nome-publicador">
+                        <span class="nome-publicador">' . $usuario_pub->get_nome() . '</span>
+                    </div>
                     <div id="texto">
                         <span class="texto">' . $post->get_texto() . '</span>
                     </div>
@@ -36,25 +36,25 @@ $usuario = $dao_u->obter($_SESSION['id_usuario']);
                     </div>
                     ';
                 if(isset($_SESSION['id_usuario'])){
+                    echo '
+                    <form method="post" action="../controller/curtir_post.php">
+                        <div class="curtir-post">
+                            <input type="hidden" name="id_post" value="' . $post->get_id_post() . '">
+                            <input type="hidden" name="curtir" value="' . $_SESSION['curtir'] = true . '">
+                            <input type="submit" name="curtir" value="Curtir">
+                        </div>
+                    </form>';
                     if($_SESSION['id_usuario'] == $post->get_id_publicador()){
                         echo '
-                        <form method="post" action="../controller/excluir_post.php">
-                            <div class="excluir-post">
-                                <input type="hidden" name="id_post" value="' . $post->get_id_post() . '">
-                                <input type="hidden" name="excluir" value="' . $_SESSION['excluir'] = true . '">
-                                <input type="submit" name="excluir" value="Excluir">
-                            </div>
-                        </form>
-
-                        <form method="post" action="../controller/curtir_post.php">
-                            <div class="curtir-post">
-                                <input type="hidden" name="id_post" value="' . $post->get_id_post() . '">
-                                <input type="hidden" name="curtir" value="' . $_SESSION['curtir'] = true . '">
-                                <input type="submit" name="curtir" value="Curtir">
-                            </div>
-                        </form>';
-                echo '
-                </div>';  
+                    <form method="post" action="../controller/excluir_post.php">
+                        <div class="excluir-post">
+                            <input type="hidden" name="id_post" value="' . $post->get_id_post() . '">
+                            <input type="hidden" name="excluir" value="' . $_SESSION['excluir'] = true . '">
+                            <input type="submit" name="excluir" value="Excluir">
+                        </div>
+                    </form>
+                    
+                </div>'; 
                     }
                 }  
             }
