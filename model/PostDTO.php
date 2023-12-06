@@ -5,6 +5,7 @@ class Post{
     private $texto;
     private $anexo;
     private $curtida;
+    private $id_curtidor;
 
     function set_id_post($id_post){
         $this->id_post = $id_post;
@@ -20,6 +21,14 @@ class Post{
 
     function get_id_publicador(){
         return $this->id_publicador;
+    }
+
+    function set_id_curtidor($id_curtidor){
+        $this->id_curtidor = $id_curtidor;    
+    }
+
+    function get_id_curtidor(){
+        return $this->id_curtidor;
     }
 
     function set_texto($texto){

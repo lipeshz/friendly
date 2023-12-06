@@ -10,7 +10,7 @@ class PostDAO{
     }
 
     function inserir($post){
-        $result = $this->con->query("INSERT INTO posts (id_publicador,texto,anexo,curtida) VALUES ('" . $post->get_id_publicador() ."', '" . $post->get_texto() . "', '" . $post->get_anexo() . "', '" . $post->get_curtida() . "')");
+        $result = $this->con->query("INSERT INTO posts (id_publicador, id_curtidor,texto,anexo,curtida) VALUES ('" . $post->get_id_publicador() ."', '" . $post->get_id_curtidor() . "', '" . $post->get_texto() . "', '" . $post->get_anexo() . "', '" . $post->get_curtida() . "')");
 
         if($result->rowCount() > 0){
             return true;
@@ -41,6 +41,7 @@ class PostDAO{
             $p->set_texto($row['texto']);
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
+            $p->set_id_curtidor($row['id_curtidor']);
             
             return $p;
         }else{
@@ -60,6 +61,7 @@ class PostDAO{
             $p->set_texto($row['texto']);
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
+            $p->set_id_curtidor($row['id_curtidor']);
             
             return $p;
         }else{
@@ -82,6 +84,7 @@ class PostDAO{
             $p->set_texto($row['texto']);
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
+            $p->set_id_curtidor($row['id_curtidor']);
             array_push($lista, $p);
         }
         return $lista;
