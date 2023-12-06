@@ -2,9 +2,9 @@
 session_start();
 require_once('../model/UsuarioDAO.php');
 $dao = new UsuarioDAO();
-$email_existente = $dao->obter_por_email_cad($email);
-$nick_existente = $dao->obter_por_nick($nick);
-$cpf_existente = $dao->obter_por_cpf($cpf);
+$email_existente = $dao->obter_por_email_cad($_POST['email']);
+$nick_existente = $dao->obter_por_nick($_POST['nick']);
+$cpf_existente = $dao->obter_por_cpf($_POST['cpf']);
 
 
 if($_POST['senha'] != $_POST['conf_senha']){

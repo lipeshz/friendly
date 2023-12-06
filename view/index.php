@@ -28,6 +28,8 @@ if(isset($_SESSION['id_usuario'])){
                 <div class="post" id="' . $post->get_id_post() . '">
                     <div class="nome-publicador">
                         <span class="nome-publicador">' . $publicador->get_nome() . '</span>
+                        </br>
+                        <span class="nick-publicador">@' . $publicador->get_nick() . '</span>
                     </div>
                     <div id="texto">
                         <span class="texto">' . $post->get_texto() . '</span>
