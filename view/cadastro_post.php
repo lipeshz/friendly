@@ -33,13 +33,13 @@ if(isset($_SESSION['cad_texto_err'])){
             echo $mensagem_post;
             ?>
             <div class="entrar-post">
-                <input type="file" name="anexo" id="anexo">
+                <input type="file" name="anexo" accept="image/*" id="anexo">
             </div>
 
             <?php 
             echo '
             <div class="publicar">
-                <input type="submit" name="id_publicador" value="Enviar" class="Enviar">
+                <input type="submit" name="id_publicador" value="Enviar" class="enviar">
             </div>';
             ?>
             </div>

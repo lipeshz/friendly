@@ -34,6 +34,9 @@ if(isset($_SESSION['id_usuario'])){
                     <div id="texto">
                         <span class="texto">' . $post->get_texto() . '</span>
                     </div>
+                    <div class="anexo">
+                    <img src="../img" alt="" srcset="">
+                    </div>
                     <div class="curtidas">
                         <p>' . $post->get_curtida() . '</p>
                     </div>
