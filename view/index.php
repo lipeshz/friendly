@@ -5,8 +5,9 @@ require_once('../model/UsuarioDAO.php');
 $dao_u = new UsuarioDAO();
 $dao_p = new PostDAO();
 $posts = $dao_p->obter_todos();
-$usuario = $dao_u->obter($_SESSION['id_usuario']);
-$usuario_pub = $dao_u->obter($id_pub);
+if(isset($_SESSION['id_usuario'])){
+    $usuario = $dao_u->obter($_SESSION['id_usuario']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +23,11 @@ $usuario_pub = $dao_u->obter($id_pub);
         <?php 
             foreach ($posts as $post_arr){
                 $post = $post_arr;
-                $id_pub = $post->get_id_publicador();
+                $publicador = $dao_u->obter($post->get_id_publicador());
                 echo '
                 <div class="post" id="' . $post->get_id_post() . '">
                     <div class="nome-publicador">
-                        <span class="nome-publicador">' . $usuario_pub->get_nome() . '</span>
+                        <span class="nome-publicador">' . $publicador->get_nome() . '</span>
                     </div>
                     <div id="texto">
                         <span class="texto">' . $post->get_texto() . '</span>

@@ -40,7 +40,7 @@ class UsuarioDAO{
     }
 
     function obter($id){
-        $result = $this->con->query("SELECT * FROM usuarios WHERE (id_usuario = '" . $id . "')");
+        $result = $this->con->query("SELECT * FROM usuarios WHERE id_usuario = '" . $id . "'");
 
         if($result->rowCount() > 0){
             $row = $result->fetch(PDO::FETCH_ASSOC);
