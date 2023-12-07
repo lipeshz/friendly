@@ -69,6 +69,25 @@ class PostDAO{
         }
     }
 
+    function obter_por_publicador($id){
+        $posts=[];
+        $result = $this->con->query("SELECT * FROM posts WHERE (id_publicador = '" . $id . "')");
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $p = new Post();
+                $p->set_id_post($row['id_post']);
+                $p->set_id_publicador($row['id_publicador']);
+                $p->set_texto($row['texto']);
+                $p->set_anexo($row['anexo']);
+                $p->set_curtida($row['curtida']);
+                $p->set_id_curtidor($row['id_curtidor']);
+                array_push($posts, $p);
+            }
+            return $posts;
+        }
+    
+
     // function obter_por_publicador($id_publicador){
     //     $result = $this->con->query("SELECT FROM posts WHERE (id_publicador = )")
     // }

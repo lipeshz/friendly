@@ -3,7 +3,6 @@ session_start();
 require_once('../model/PostDAO.php');
 require_once('../model/UsuarioDAO.php');
 
-session_start();
 function random_string($length) {
     $str = random_bytes($length);
     $str = base64_encode($str);
@@ -12,7 +11,7 @@ function random_string($length) {
     return $str;
 }
 
-if(empty($_POST['texto'])){
+if(empty($_POST['texto']) && empty($_POST['anexo'])){
     $_SESSION['cad_texto_err'] = true;
     header("Location:../view/cadastro_post.php");
 }else{
@@ -21,20 +20,19 @@ if(empty($_POST['texto'])){
     $post = new Post();
     $usuario = $dao_u->obter($_SESSION['id_usuario']);
 
-    $id_pub = $usuario->get_id_usuario();
     $post->set_texto($_POST['texto']);
-    $post->set_id_publicador($id_pub);
+    $post->set_id_publicador($_SESSION['id_usuario']);
     
     if(isset($_POST['anexo'])){
-        $array_type = explode('/', $_FILES['img_princ']['type']);
-        $exetension = end($array_type);
+        $array_type = explode('/', $_FILES['anexo']['type']);
+        $extension = end($array_type);
 
-        $nome = time().random_string(24);
-        $nome_img = $nome.".".$exetension;
-        $_FILES['img_princ']['nome'] = $nome_img;
+        $nome_arquivo = time().random_string(24);
+        $nome_img = $nome_arquivo.".".$extension;
+        $_FILES['anexo']['name'] = $nome_img;
         $uploaddir = 'C:/XAMPP/xampp/htdocs/friendly-main/img/';
-        $uploadfile = $uploaddir.$_FILES['img_princ']['nome'];
-        move_uploaded_file($_FILES['img_princ']['tmp_name'], $uploadfile);
+        $uploadfile = $uploaddir.$_FILES['anexo']['name'];
+        move_uploaded_file($_FILES['anexo']['tmp_name'], $uploadfile);
 
         $post->set_anexo($nome_img);
     }

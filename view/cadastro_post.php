@@ -29,9 +29,7 @@ if(isset($_SESSION['cad_texto_err'])){
             <div class="entrar-post">
                 <input type="text" name="texto" id="texto" placeholder="O que está acontecendo?">
             </div>
-            <?php 
-            echo $mensagem_post;
-            ?>
+
             <div class="entrar-post">
                 <input type="file" name="anexo" accept="image/*" id="anexo">
             </div>
