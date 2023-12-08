@@ -63,7 +63,6 @@ if(isset($_SESSION['id_usuario'])){
                                 <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalExcluirPost'>Excluir Post</button>
                             </div>
                         </form>
-                    
                 </div>
                 </br>";
                     }
