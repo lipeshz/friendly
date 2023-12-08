@@ -25,7 +25,7 @@ if(isset($_SESSION['cad_texto_err'])){
     <title>Criar Post</title>
 </head>
     <body>
-        <form action="../controller/cadastro_post.php" method="post">
+        <form action="../controller/cadastro_post.php" method="post" enctype="multipart/form-data">
             <div class="entrar-post">
                 <input type="text" name="texto" id="texto" placeholder="O que está acontecendo?">
             </div>

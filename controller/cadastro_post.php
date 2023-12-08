@@ -33,8 +33,12 @@ if(empty($_POST['texto']) && empty($_POST['anexo'])){
         $uploaddir = 'C:/XAMPP/xampp/htdocs/friendly-main/img/';
         $uploadfile = $uploaddir.$_FILES['anexo']['name'];
         move_uploaded_file($_FILES['anexo']['tmp_name'], $uploadfile);
+        // $nome_arquivo = $_FILES['anexo']['name'];
+        // $tmp_name = $_FILES['anexo']['tmp_name'];
+        // $diretorio = "../img/";
+        // $moved = move_uploaded_file($tmp_name, $diretorio.$nome_arquivo);
 
-        $post->set_anexo($nome_img);
+        $post->set_anexo($moved);
     }
     
     if($dao_p->inserir($post)){

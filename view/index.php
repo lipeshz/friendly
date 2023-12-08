@@ -69,7 +69,6 @@ if(isset($_SESSION['id_usuario'])){
                 }                    
             }
         ?>
-    
     <!-- Modal -->
     <div class="modal" tabindex="-1">
         <div class="modal-dialog">

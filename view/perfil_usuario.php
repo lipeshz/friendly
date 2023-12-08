@@ -27,17 +27,19 @@ if(isset($_SESSION['id_usuario'])){
             if(isset($_SESSION['id_usuario'])){
                 if($_GET['id_publicador'] == $_SESSION['id_usuario']){
                     echo "
-                    <button onclick='abrirFormulario()' class='editar-perfil-abrir'>Editar</button>
-                    <div id='overlay'></div>
-                    <div class='editar-perfil-form'>
-                        <span onclick='fecharFormulario()' class='fechar-form-fechar'>X</span>
+                    <button class='editar-perfil-abrir' data-modal-target='#editar-form'>Editar</button>
+                    <div class='editar-perfil-form' id='editar-form'>
+                        <div class='form-header'>
+                            <div class='titulo'>Editar perfil</div>
+                            <button class='editar-perfil-fechar'>X</button>
+                        </div>
                         <form id='formulario-editar'>
                             <label>Nome</label>
                             <input type='text' id='nome' value='".$usuario->get_nome()."'>
-
                             <input type='submit' id='enviar' value='Enviar'>
                         </form>
                     </div>
+                    <div id='overlay'></div>
                     ";
                 }
             }
