@@ -33,16 +33,19 @@ if(isset($_SESSION['id_usuario'])){
                             </br>
                             <span class='nick-publicador'>@" . $publicador->get_nick() . "</span>
                         </div>
-                        <div class='texto'>
-                            <span class='texto'>" . $post->get_texto() . "</span>
-                        </div>
-                        <div class='anexo'>
-                            <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
-                        </div>
-                        <div class='curtidas'>
-                            <p>" . $post->get_curtida() . "</p>
-                        </div>
-                    </a>
+                        </a>
+                <a href='post.php?id_post=".$post->get_id_post()."' style=' text-decoration: none;'>
+                    <div class='texto'>
+                        <span class='texto'>" . $post->get_texto() . "</span>
+                    </div>
+                    <div class='anexo'>
+                        <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
+                    </div>
+                    <div class='curtidas'>
+                        <p>" . $post->get_curtida() . "</p>
+                    </div>
+                </a>
+                    
                     ";
                 if(isset($_SESSION["id_usuario"])){
                     echo "
