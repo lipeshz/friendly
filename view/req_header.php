@@ -34,7 +34,7 @@ $dao = new UsuarioDAO();
         }
         ?>
 
-        <!--MODAL-->
+        <!-- Modal -->
         <div id="modalExcluirConta" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -49,8 +49,8 @@ $dao = new UsuarioDAO();
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <form action="../controller/excluir_usuario.php" method="post">
                         <div class="excluir-usuario">
-                            <input type="hidden" name="id_usuario" value="' . $_SESSION['id_usuario'] . '">
-                            <input type="hidden" name="excluir_conta" value="' . $_SESSION['excluir'] = true . '">
+                            <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['id_usuario']; ?>">
+                            <input type="hidden" name="excluir_conta" value="<?php echo $_SESSION['excluir'] = true; ?>">
                             <input type="submit" name="excluir_conta" value="Excluir conta" id="excluir" class="btn btn-primary">
                         </div>
                     </form>

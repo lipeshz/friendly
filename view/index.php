@@ -58,13 +58,11 @@ if(isset($_SESSION['id_usuario'])){
                     </form>";
                     if($_SESSION['id_usuario'] == $post->get_id_publicador()){
                         echo "
-                    <form method='post' action='../controller/excluir_post.php'>
-                        <div class='excluir-post'>
-                            <input type='hidden' name='id_post' value='" . $post->get_id_post() . "'>
-                            <input type='hidden' name='excluir' value='" . $_SESSION['excluir'] = true . "'>
-                            <input type='submit' name='excluir' value='Excluir'>
-                        </div>
-                    </form>
+                        <form method='post' action='../controller/excluir_post.php'>
+                            <div class='excluir-post'>
+                                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalExcluirPost'>Excluir Post</button>
+                            </div>
+                        </form>
                     
                 </div>
                 </br>";
@@ -72,8 +70,9 @@ if(isset($_SESSION['id_usuario'])){
                 }                    
             }
         ?>
+        
     <!-- Modal -->
-    <div class="modal" tabindex="-1">
+    <div id="modalExcluirPost" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -85,7 +84,13 @@ if(isset($_SESSION['id_usuario'])){
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form action="../controller/excluir_post.php" method="post">
+                    <div class="excluir-usuario">
+                        <input type="hidden" name="id_post" value="<?php echo $post->get_id_post(); ?>">
+                        <input type="hidden" name="excluir" value="<?php echo $_SESSION['excluir'] = true ?>">
+                        <input type="submit" name="excluir_post" value="Excluir post" id="excluir" class="btn btn-primary">
+                    </div>
+                </form>
             </div>
             </div>
         </div>
