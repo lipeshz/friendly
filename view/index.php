@@ -21,7 +21,7 @@ if(isset($_SESSION['id_usuario'])){
     </head>
     <body>
         <?php include 'req_header.php'; ?>
-        <?php 
+        <?php
             foreach ($posts as $post_arr){
                 $post = $post_arr;
                 $publicador = $dao_u->obter($post->get_id_publicador());

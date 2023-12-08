@@ -30,7 +30,7 @@ if(empty($_POST['texto']) && empty($_POST['anexo'])){
         $nome_arquivo = time().random_string(24);
         $nome_img = $nome_arquivo.".".$extension;
         $_FILES['anexo']['name'] = $nome_img;
-        $uploaddir = 'C:/XAMPP/xampp/htdocs/friendly-main/img/';
+        $uploaddir = '../img/';
         $uploadfile = $uploaddir.$_FILES['anexo']['name'];
         move_uploaded_file($_FILES['anexo']['tmp_name'], $uploadfile);
         // $nome_arquivo = $_FILES['anexo']['name'];
