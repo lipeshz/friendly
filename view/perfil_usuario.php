@@ -16,7 +16,6 @@ if(isset($_SESSION['id_usuario'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="../js/editar_perfil.js" defer></script> -->
     <link rel="stylesheet" href="../css/editar_usuario.css">
     <title>Friendly: <?php echo $publicador->get_nome() ?></title>
 </head>
@@ -25,6 +24,7 @@ if(isset($_SESSION['id_usuario'])){
             echo "
             <h3>".$publicador->get_nome()."</h3>
             <h4>@".$publicador->get_nick()."</h4>
+            <h5>".$publicador->get_biografia()."</h5>
             ";
             if(isset($_SESSION['id_usuario'])){
                 if($_GET['id_publicador'] == $_SESSION['id_usuario']){
@@ -37,7 +37,7 @@ if(isset($_SESSION['id_usuario'])){
                             <div class='title'>Editar Perfil</div>
                         </div>
                         <div class='modal-body'>
-                            <form id='formulario-editar' action='../controller/editar_usuario.php'>
+                            <form id='formulario-editar' action='../controller/editar_usuario.php' method='post'>
                                 <div class='nome-editar'>
                                     <label>Nome</label>
                                     <input name='nome' type='text' id='nome' value='".$usuario->get_nome()."'>
