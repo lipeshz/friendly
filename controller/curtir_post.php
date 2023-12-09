@@ -7,6 +7,7 @@ $post = $dao->obter($_POST['id_post']);
 // $curtidor = array($_SESSION['id_usuario']);
 // $curtidor_stringo = implode(".", $curtidor);
 
+$_SESSION['curtir']=true;
 if(isset($_SESSION['curtir'])){
     $dao->inserir_curtida($_POST['id_post']);
     // $array_push($curtidor, $curtidores);

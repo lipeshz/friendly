@@ -33,7 +33,6 @@ $publicador = $dao_u->obter($post->get_id_publicador());
                     <form method='post' action='../controller/curtir_post.php' id='form-curtir'>
                         <div class='curtir-post'>
                             <input type='hidden' name='id_post' value='" . $post->get_id_post() . "'>
-                            <input type='hidden' name='curtir' value='" . $_SESSION['curtir'] = true . "'>
                             <input type='submit' name='curtir' value='Curtir'>
                         </div>
                     </form>

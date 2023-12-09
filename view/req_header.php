@@ -20,7 +20,6 @@ $dao = new UsuarioDAO();
             echo '
             <form action="../controller/sair.php" method="post">
                 <div class="sair-usuario">
-                    <input type="hidden" name="sair" value="' . $_SESSION['sair']=true . '">
                     <input type="submit" value="Sair">
                 </div>
             </form>

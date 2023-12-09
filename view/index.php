@@ -30,10 +30,11 @@ if(isset($_SESSION['id_usuario'])){
                     <div class='publicacao' id='" . $post->get_id_post() . "'>
                         <div class='nome-publicador'>
                             <span class='nome-publicador'>" . $publicador->get_nome() . "</span>
+                </a>
                             </br>
                             <span class='nick-publicador'>@" . $publicador->get_nick() . "</span>
                         </div>
-                        </a>
+                        
                 <a href='post.php?id_post=".$post->get_id_post()."' style=' text-decoration: none;'>
                     <div class='texto'>
                         <span class='texto'>" . $post->get_texto() . "</span>
@@ -41,10 +42,11 @@ if(isset($_SESSION['id_usuario'])){
                     <div class='anexo'>
                         <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
                     </div>
+                </a>
                     <div class='curtidas'>
                         <p>" . $post->get_curtida() . "</p>
                     </div>
-                </a>
+                
                     
                     ";
                 if(isset($_SESSION["id_usuario"])){
@@ -52,7 +54,6 @@ if(isset($_SESSION['id_usuario'])){
                     <form method='post' action='../controller/curtir_post.php' id='form-curtir'>
                         <div class='curtir-post'>
                             <input type='hidden' name='id_post' value='" . $post->get_id_post() . "'>
-                            <input type='hidden' name='curtir' value='" . $_SESSION['curtir'] = true . "'>
                             <input type='submit' name='curtir' value='Curtir'>
                         </div>
                     </form>";
