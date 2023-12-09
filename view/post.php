@@ -56,6 +56,13 @@ $publicador = $dao_u->obter($post->get_id_publicador());
                 <span>".$post->get_texto()."</span>
             </div>
         </div>
+        <div class='comentario'>
+            <form method'post' action='../controller/comentar.php' id='form-comentario'>
+                <input type='text' class='comentario-texto' value='' name='comentario'>
+                <input type='submit' class='comentar' value='Responder' name='comentar'>
+            </form>
+            
+        </div>
         ";
         ?>
     </body>

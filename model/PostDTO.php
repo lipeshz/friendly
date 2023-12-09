@@ -6,6 +6,7 @@ class Post{
     private $anexo;
     private $curtida;
     private $id_curtidor;
+    private $id_comentario;
 
     function set_id_post($id_post){
         $this->id_post = $id_post;
@@ -53,6 +54,14 @@ class Post{
 
     function get_curtida(){
         return $this->curtida;
+    }
+
+    function set_id_comentario($id_comentario){
+        $this->id_comentario = $id_comentario;
+    }
+
+    function get_id_comentario(){
+        return $this->id_comentario;
     }
 }
 ?>

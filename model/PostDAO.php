@@ -10,7 +10,7 @@ class PostDAO{
     }
 
     function inserir($post){
-        $result = $this->con->query("INSERT INTO posts (id_publicador, id_curtidor,texto,anexo,curtida) VALUES ('" . $post->get_id_publicador() ."', '" . $post->get_id_curtidor() . "', '" . $post->get_texto() . "', '" . $post->get_anexo() . "', '" . $post->get_curtida() . "')");
+        $result = $this->con->query("INSERT INTO posts (id_publicador, id_curtidor,texto,anexo,curtida,id_comentario) VALUES ('" . $post->get_id_publicador() ."', '" . $post->get_id_curtidor() . "', '" . $post->get_texto() . "', '" . $post->get_anexo() . "', '" . $post->get_curtida() . "', '".$post->get_id_comentario()."')");
 
         if($result->rowCount() > 0){
             return true;
@@ -42,6 +42,7 @@ class PostDAO{
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
             $p->set_id_curtidor($row['id_curtidor']);
+            $p->set_id_comentario($row['id_comentario']);
             
             return $p;
         }else{
@@ -62,6 +63,7 @@ class PostDAO{
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
             $p->set_id_curtidor($row['id_curtidor']);
+            $p->set_id_comentario($row['id_comentario']);
             
             return $p;
         }else{
@@ -82,15 +84,11 @@ class PostDAO{
                 $p->set_anexo($row['anexo']);
                 $p->set_curtida($row['curtida']);
                 $p->set_id_curtidor($row['id_curtidor']);
+                $p->set_id_comentario($row['id_comentario']);
                 array_push($posts, $p);
             }
             return $posts;
         }
-    
-
-    // function obter_por_publicador($id_publicador){
-    //     $result = $this->con->query("SELECT FROM posts WHERE (id_publicador = )")
-    // }
 
     function obter_todos(){
         $lista = [];
@@ -104,6 +102,7 @@ class PostDAO{
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);
             $p->set_id_curtidor($row['id_curtidor']);
+            $p->set_id_comentario($row['id_comentario']);
             array_push($lista, $p);
         }
         return $lista;
