@@ -22,53 +22,63 @@ if(isset($_SESSION['id_usuario'])){
     <body>
         <?php include 'req_header.php'; ?>
         <?php
+        if($posts != []){
             foreach ($posts as $post_arr){
                 $post = $post_arr;
-                $publicador = $dao_u->obter($post->get_id_publicador());
-                echo "
-                <a href='perfil_usuario.php?id_publicador=".$post->get_id_publicador()."' style='text-decoration: none;'>
-                    <div class='publicacao' id='" . $post->get_id_post() . "'>
-                        <div class='nome-publicador'>
-                            <span class='nome-publicador'>" . $publicador->get_nome() . "</span>
-                </a>
-                            </br>
-                            <span class='nick-publicador'>@" . $publicador->get_nick() . "</span>
-                        </div>
-                        
-                <a href='post.php?id_post=".$post->get_id_post()."' style=' text-decoration: none;'>
-                    <div class='texto'>
-                        <span class='texto'>" . $post->get_texto() . "</span>
-                    </div>
-                    <div class='anexo'>
-                        <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
-                    </div>
-                </a>
-                    <div class='curtidas'>
-                        <p>" . $post->get_curtida() . "</p>
-                    </div>
+
+                if($post->get_id_publicador()){
+                    $publicador = $dao_u->obter($post->get_id_publicador());
+                }
                 
-                    
-                    ";
-                if(isset($_SESSION["id_usuario"])){
+                if($publicador){
                     echo "
-                    <form method='post' action='../controller/curtir_post.php' id='form-curtir'>
-                        <div class='curtir-post'>
-                            <input type='hidden' name='id_post' value='" . $post->get_id_post() . "'>
-                            <input type='submit' name='curtir' value='Curtir'>
-                        </div>
-                    </form>";
-                    if($_SESSION['id_usuario'] == $post->get_id_publicador()){
-                        echo "
-                        <form method='post' action='../controller/excluir_post.php'>
-                            <div class='excluir-post'>
-                                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalExcluirPost'>Excluir Post</button>
+                    <a href='perfil_usuario.php?id_publicador=".$post->get_id_publicador()."' style='text-decoration: none;'>
+                        <div class='publicacao' id='" . $post->get_id_post() . "'>
+                            <div class='nome-publicador'>
+                                <span class='nome-publicador'>" . $publicador->get_nome() . "</span>
+                    </a>
+                                </br>
+                                <span class='nick-publicador'>@" . $publicador->get_nick() . "</span>
                             </div>
-                        </form>
-                </div>
-                </br>";
+                            
+                    <a href='post.php?id_post=".$post->get_id_post()."' style=' text-decoration: none;'>
+                        <div class='texto'>
+                            <span class='texto'>" . $post->get_texto() . "</span>
+                        </div>
+                        <div class='anexo'>
+                            <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
+                        </div>
+                    </a>
+                        <div class='curtidas'>
+                            <p>" . $post->get_curtida() . "</p>
+                        </div>
+                    
+                        
+                        ";
+                    if(isset($_SESSION["id_usuario"])){
+                        echo "
+                        <form method='post' action='../controller/curtir_post.php' id='form-curtir'>
+                            <div class='curtir-post'>
+                                <input type='hidden' name='id_post' value='" . $post->get_id_post() . "'>
+                                <input type='submit' name='curtir' value='Curtir'>
+                            </div>
+                        </form>";
+                        if($_SESSION['id_usuario'] == $post->get_id_publicador()){
+                            echo "
+                            <form method='post' action='../controller/excluir_post.php'>
+                                <div class='excluir-post'>
+                                    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalExcluirPost'>Excluir Post</button>
+                                </div>
+                            </form>
+                    </div>
+                    </br>";
                     }
-                }                    
-            }
+                }                   
+                }
+        }
+        }else{
+            echo "Não há nada aqui";
+        }
         ?>
         
     <!-- Modal -->

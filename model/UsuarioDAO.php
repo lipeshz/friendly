@@ -10,7 +10,7 @@ class UsuarioDAO{
     }
 
     function inserir($usuario){
-        $result = $this->con->query("INSERT INTO usuarios (nome,nick,email,cpf,data_nasc,senha) VALUES ('" . $usuario->get_nome() . "', '" . $usuario->get_nick() . "', '" . $usuario->get_email() . "', '" . $usuario->get_cpf() . "', '" . $usuario->get_data_nasc() . "', '" . $usuario->get_senha() . "')");
+        $result = $this->con->query("INSERT INTO usuarios (nome,nick,biografia,email,cpf,data_nasc,senha) VALUES ('" . $usuario->get_nome() . "', '" . $usuario->get_nick() . "', '" . $usuario->get_biografia() . "', '" . $usuario->get_email() . "', '" . $usuario->get_cpf() . "', '" . $usuario->get_data_nasc() . "', '" . $usuario->get_senha() . "')");
 
         if($result->rowCount() > 0){
             return true;
@@ -20,7 +20,7 @@ class UsuarioDAO{
     }
 
     function alterar($usuario){
-        $result = $this->con->query("UPDATE usuarios SET nome = '" . $usuario->get_nome() . "', nick = '" . $usuario->get_nick() . "', email = '" . $usuario->get_email() . "', cpf = '" . $usuario->get_cpf() . "', data_nasc = '" . $usuario->get_data_nasc() . "', senha = '" . $usuario->get_senha() . "' WHERE id_usuario = " . $usuario->get_id_usuario());
+        $result = $this->con->query("UPDATE usuarios SET nome = '" . $usuario->get_nome() . "', nick = '" . $usuario->get_nick() . "', biografia = '" . $usuario->get_biografia() . "', email = '" . $usuario->get_email() . "', cpf = '" . $usuario->get_cpf() . "', data_nasc = '" . $usuario->get_data_nasc() . "', senha = '" . $usuario->get_senha() . "' WHERE id_usuario = " . $usuario->get_id_usuario());
 
         if($result->rowCount() > 0){
             return true;
@@ -53,6 +53,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
 
             return $u;
         }else{
@@ -74,6 +75,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
             
             return $u;
         }else{
@@ -95,6 +97,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
 
             return $u;
         }else{
@@ -116,6 +119,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
 
             return $u;
         }else{
@@ -137,6 +141,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
 
             return $u;
         }else{
@@ -157,6 +162,7 @@ class UsuarioDAO{
             $u->set_cpf($row['cpf']);
             $u->set_data_nasc($row['data_nasc']);
             $u->set_senha($row['senha']);
+            $u->set_biografia($row['biografia']);
             array_push($lista, $u);
            }
            return $lista;

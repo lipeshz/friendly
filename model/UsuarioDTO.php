@@ -3,6 +3,7 @@ class Usuario{
     private $id_usuario;
     private $nome;
     private $nick;
+    private $biografia;
     private $email;
     private $cpf;
     private $data_nasc;
@@ -30,6 +31,14 @@ class Usuario{
 
     function get_nick(){
         return $this->nick;
+    }
+
+    function set_biografia($biografia){
+        $this->biografia = $biografia;
+    }
+
+    function get_biografia(){
+        return $this->biografia;
     }
 
     function set_email($email){

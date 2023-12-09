@@ -16,6 +16,8 @@ if(isset($_SESSION['id_usuario'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="../js/editar_perfil.js" defer></script> -->
+    <link rel="stylesheet" href="../css/editar_usuario.css">
     <title>Friendly: <?php echo $publicador->get_nome() ?></title>
 </head>
     <body>
@@ -27,19 +29,39 @@ if(isset($_SESSION['id_usuario'])){
             if(isset($_SESSION['id_usuario'])){
                 if($_GET['id_publicador'] == $_SESSION['id_usuario']){
                     echo "
-                    <button class='editar-perfil-abrir' data-modal-target='#editar-form'>Editar</button>
-                    <div class='editar-perfil-form' id='editar-form'>
-                        <div class='form-header'>
-                            <div class='titulo'>Editar perfil</div>
-                            <button class='editar-perfil-fechar'>X</button>
+                    <button>Personalizar</button>
+                    <dialog>
+                    <div class='modal' id='modal'>
+                        <button>X</button>
+                        <div class='modal-header'>
+                            <div class='title'>Editar Perfil</div>
                         </div>
-                        <form id='formulario-editar'>
-                            <label>Nome</label>
-                            <input type='text' id='nome' value='".$usuario->get_nome()."'>
-                            <input type='submit' id='enviar' value='Enviar'>
-                        </form>
+                        <div class='modal-body'>
+                            <form id='formulario-editar' action='../controller/editar_usuario.php'>
+                                <div class='nome-editar'>
+                                    <label>Nome</label>
+                                    <input name='nome' type='text' id='nome' value='".$usuario->get_nome()."'>
+                                </div>
+                                </br>
+
+                                <div class='nick-editar'>
+                                    <label>Nick</label>
+                                    <input name='nick' type='text' id='nick' value='".$usuario->get_nick()."'>
+                                </div>
+                                </br>
+
+                                <div class='biograia-editar'>
+                                    <label>Biografia</label>
+                                    <input name='biografia' type='text' id='biografia' value='".$usuario->get_biografia()."'>
+                                </div>
+                                </br>
+                                <input type='submit' id='enviar' value='Enviar'>
+                            </form>
+                        </div>
                     </div>
+                    </dialog>
                     <div id='overlay'></div>
+
                     ";
                 }
             }
@@ -56,7 +78,7 @@ if(isset($_SESSION['id_usuario'])){
                                 <span class='nick-publicador'>@" . $publicador->get_nick() . "</span>
                             </div>
                             <div class='texto'>
-                    <a href='perfil_usuario.php?id_post=".$post->get_id_post()."' style='text-decoration: none;'>
+                    <a href='post.php?id_post=".$post->get_id_post()."' style='text-decoration: none;'>
                                 <span class='texto'>" . $post->get_texto() . "</span>
                             </div>
                             <div class='anexo'>
@@ -90,6 +112,20 @@ if(isset($_SESSION['id_usuario'])){
             }
         ?>
 
-        <script src="../js/editar_perfil.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector("button");
+    const modal = document.querySelector("dialog");
+    const buttonClose = document.querySelector("dialog button");
+
+    button.onclick = function () {
+      modal.showModal();
+    };
+
+    buttonClose.onclick = function () {
+      modal.close();
+    };
+  });
+</script>
     </body>
 </html>
