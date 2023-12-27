@@ -1,6 +1,8 @@
 <?php 
 class Usuario{
     private $id_usuario;
+    private $foto_perfil;
+    private $banner;
     private $nome;
     private $nick;
     private $biografia;
@@ -15,6 +17,22 @@ class Usuario{
 
     function get_id_usuario(){
         return $this->id_usuario;
+    }
+
+    function set_foto_perfil($foto_perfil){
+        $this->foto_perfil = $foto_perfil;
+    }
+
+    function get_foto_perfil(){
+        return $this->foto_perfil;
+    }
+
+    function set_banner($banner){
+        $this->banner = $banner;
+    }
+
+    function get_banner(){
+        return $this->banner;
     }
 
     function set_nome($nome){

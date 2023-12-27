@@ -10,7 +10,7 @@ class UsuarioDAO{
     }
 
     function inserir($usuario){
-        $result = $this->con->query("INSERT INTO usuarios (nome,nick,biografia,email,cpf,data_nasc,senha) VALUES ('" . $usuario->get_nome() . "', '" . $usuario->get_nick() . "', '" . $usuario->get_biografia() . "', '" . $usuario->get_email() . "', '" . $usuario->get_cpf() . "', '" . $usuario->get_data_nasc() . "', '" . $usuario->get_senha() . "')");
+        $result = $this->con->query("INSERT INTO usuarios (foto_perfil,banner,nome,nick,biografia,email,cpf,data_nasc,senha) VALUES ('" . $usuario->get_nome() . "', '" . $usuario->get_foto_perfil() . "', '" . $usuario->get_banner() . "', '" . $usuario->get_nick() . "', '" . $usuario->get_biografia() . "', '" . $usuario->get_email() . "', '" . $usuario->get_cpf() . "', '" . $usuario->get_data_nasc() . "', '" . $usuario->get_senha() . "')");
 
         if($result->rowCount() > 0){
             return true;
@@ -20,7 +20,7 @@ class UsuarioDAO{
     }
 
     function alterar($usuario){
-        $result = $this->con->query("UPDATE usuarios SET nome = '" . $usuario->get_nome() . "', nick = '" . $usuario->get_nick() . "', biografia = '" . $usuario->get_biografia() . "', email = '" . $usuario->get_email() . "', cpf = '" . $usuario->get_cpf() . "', data_nasc = '" . $usuario->get_data_nasc() . "', senha = '" . $usuario->get_senha() . "' WHERE id_usuario = " . $usuario->get_id_usuario());
+        $result = $this->con->query("UPDATE usuarios SET foto_perfil = '" . $usuario->get_foto_perfil() . "', banner = '" . $usuario->get_banner() . "', nome = '" . $usuario->get_nome() . "', nick = '" . $usuario->get_nick() . "', biografia = '" . $usuario->get_biografia() . "', email = '" . $usuario->get_email() . "', cpf = '" . $usuario->get_cpf() . "', data_nasc = '" . $usuario->get_data_nasc() . "', senha = '" . $usuario->get_senha() . "' WHERE id_usuario = " . $usuario->get_id_usuario());
 
         if($result->rowCount() > 0){
             return true;
@@ -47,6 +47,8 @@ class UsuarioDAO{
 
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);
@@ -69,6 +71,8 @@ class UsuarioDAO{
 
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);
@@ -91,6 +95,8 @@ class UsuarioDAO{
 
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);
@@ -113,6 +119,8 @@ class UsuarioDAO{
 
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);
@@ -135,6 +143,8 @@ class UsuarioDAO{
 
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);
@@ -156,6 +166,8 @@ class UsuarioDAO{
            while($row = $result->fetch(PDO::FETCH_ASSOC)){
             $u = new Usuario();
             $u->set_id_usuario($row['id_usuario']);
+            $u->set_foto_perfil($row['foto_perfil']);
+            $u->set_banner($row['banner']);
             $u->set_nome($row['nome']);
             $u->set_nick($row['nick']);
             $u->set_email($row['email']);

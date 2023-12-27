@@ -31,7 +31,7 @@ if(isset($_SESSION['cad_texto_err'])){
             </div>
 
             <div class="entrar-post">
-                <input type="file" name="anexo" accept="image/*" id="anexo">
+                <input type="file" name="anexo" id="anexo">
             </div>
 
             <?php 

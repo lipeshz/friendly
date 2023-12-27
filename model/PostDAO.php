@@ -58,7 +58,8 @@ class PostDAO{
 
             $p = new Post();
             $p->set_id_post($row['id_post']);
-            $p->set_id_publicador($row['id_publicador']);
+            $p->set_id_publicador($row['id_publicador'
+        ]);
             $p->set_texto($row['texto']);
             $p->set_anexo($row['anexo']);
             $p->set_curtida($row['curtida']);

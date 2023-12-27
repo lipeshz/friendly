@@ -46,15 +46,14 @@ if(isset($_SESSION['id_usuario'])){
                             <span class='texto'>" . $post->get_texto() . "</span>
                         </div>
                         <div class='anexo'>
-                            <img src='../img" . $post->get_anexo() . "' alt='' srcset=''>
+                            <img src='../img/".$post->get_anexo()."' alt='' srcset='' style=' max-width: 15%; max-height: 15%;'>
                         </div>
                     </a>
                         <div class='curtidas'>
                             <p>" . $post->get_curtida() . "</p>
-                        </div>
-                    
-                        
+                        </div> 
                         ";
+
                     if(isset($_SESSION["id_usuario"])){
                         echo "
                         <form method='post' action='../controller/curtir_post.php' id='form-curtir'>
@@ -71,7 +70,8 @@ if(isset($_SESSION['id_usuario'])){
                                 </div>
                             </form>
                     </div>
-                    </br>";
+                    </br>
+                    ";
                     }
                 }                   
                 }
